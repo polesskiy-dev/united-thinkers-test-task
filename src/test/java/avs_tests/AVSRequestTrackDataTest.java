@@ -36,13 +36,13 @@ public class AVSRequestTrackDataTest {
     }
 
 
-    @Test
+    @Test(timeout = 3000)
     public void testCreateTestDataSuite() {
         try {
             String REQUEST_URL = "https://sandbox-secure.unitedthinkers.com/gates/xurl?" + this.saleRequest.toGetParamsString();
             String response = HttpRequest.sendGet(REQUEST_URL);
 
-            System.out.printf("Send AVS request with accountData and zipCode %s to URL:\r\n%s\r\nResponse: %s\r\n", this.zipCode, REQUEST_URL, response);
+            System.out.printf("\r\nSend AVS request with accountData and zipCode %s to URL:\r\n%s\r\nResponse: %s\r\n", this.zipCode, REQUEST_URL, response);
             assertTrue("Expect " + expectedAvsResponseCodeString, response.contains(expectedAvsResponseCodeString));
         } catch (Exception e) {
             e.printStackTrace();

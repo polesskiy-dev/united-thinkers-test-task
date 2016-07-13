@@ -1,7 +1,11 @@
 # Test java task implementation
 ---
 
-    To run all tests just invoke Main.main
+    To run all tests:
+    $ git clone https://github.com/polesskiy-dev/united-thinkers-test-task
+    $ cd united-thinkers-test-task
+    $ mvn clean
+    $ mvn test
     
 ## Solution structure
 ---
@@ -21,7 +25,7 @@ where:
 Sale requests class hierarchy:
 
 | Sale request (abstract) |
-|---|
+| --- | --- |
 |  SaleRequestWithAccountData | SaleRequestWithAccountNumber |
 |  SaleAVSRequestWithAccountData | SaleAVSRequestWithAccountNumber |
 
@@ -35,10 +39,13 @@ so every test represents separate case
 > ResponseCode, AVS, CSC
 
 In test I just construct suitable Sale request class, 
-convert it's fields to GET parameters string and assert for right part of server response.
+convert all aggregated objects fields to GET parameters string and assert for right part of server response.
+
 Test are parameterized by 3 values - min, max bound and some value from inside, 
 and expecting response codes. 
- 
+
+Test will fail if timeout occurs - more than 3 seconds waiting 
+or if server response not with 200 "OK" http code.
  
 
 

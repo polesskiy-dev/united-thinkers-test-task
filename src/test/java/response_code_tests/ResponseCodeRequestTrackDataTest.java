@@ -34,14 +34,14 @@ public class ResponseCodeRequestTrackDataTest {
         );
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void testCreateTestDataSuite() {
         try {
             String REQUEST_URL = "https://sandbox-secure.unitedthinkers.com/gates/xurl?" + this.saleRequest.toGetParamsString();
             String response = HttpRequest.sendGet(REQUEST_URL);
 
 
-            System.out.printf("Send sale request with accountNumber and amount %d to URL:\r\n%s\r\nResponse: %s\r\n", this.amount, REQUEST_URL, response);
+            System.out.printf("\r\nSend sale request with accountNumber and amount %d to URL:\r\n%s\r\nResponse: %s\r\n", this.amount, REQUEST_URL, response);
             assertTrue("Expect " + expectedResponseCodeString, response.contains(expectedResponseCodeString));
         } catch (Exception e) {
             e.printStackTrace();

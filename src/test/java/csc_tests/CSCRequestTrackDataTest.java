@@ -5,12 +5,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import unipay.request.SaleRequest;
 import unipay.request.SaleRequestWithAccountData;
-import unipay.request.SaleRequestWithAccountNumber;
 import unipay.request.component_entities.AuthInfo;
 import unipay.request.component_entities.TransactionInfo;
 import unipay.request.component_entities.account.AccountData;
 import unipay.request.component_entities.account.AccountInfo;
-import unipay.request.component_entities.account.AccountNumber;
 import utils.HttpRequest;
 
 import java.util.Arrays;
@@ -35,13 +33,13 @@ public class CSCRequestTrackDataTest {
         );
     }
 
-    @Test
+    @Test(timeout = 3000)
     public void testCSCRequest() {
         try {
             String REQUEST_URL = "https://sandbox-secure.unitedthinkers.com/gates/xurl?" + this.saleRequest.toGetParamsString();
             String response = HttpRequest.sendGet(REQUEST_URL);
 
-            System.out.printf("Send sale request with accountData and csc code %s to URL:\r\n%s\r\nResponse: %s\r\n", this.cscCode, REQUEST_URL, response);
+            System.out.printf("\r\nSend sale request with accountData and csc code %s to URL:\r\n%s\r\nResponse: %s\r\n", this.cscCode, REQUEST_URL, response);
             assertTrue("Expect " + expectedCscResponseCodeString, response.contains(expectedCscResponseCodeString));
         } catch (Exception e) {
             e.printStackTrace();

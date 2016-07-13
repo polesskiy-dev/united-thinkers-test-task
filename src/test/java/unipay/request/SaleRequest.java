@@ -5,6 +5,7 @@ import unipay.request.component_entities.TransactionInfo;
 import unipay.request.component_entities.account.AccountInfo;
 
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Sale request container class.
@@ -31,12 +32,18 @@ public abstract class SaleRequest {
     public abstract Map toMap() throws IllegalAccessException;
 
     public String toGetParamsString() throws IllegalAccessException {
-        StringBuilder getParams = new StringBuilder();
-        this.toMap().forEach((k, v) -> getParams.append(k + "=" + v + "&"));
+        StringBuilder paramsStr = new StringBuilder();
+        Map<Object, Object> map = this.toMap();
+
+//        this.toMap().forEach((k, v) -> paramsStr.append(k + "=" + v + "&"));
+
+        for (Map.Entry<Object, Object> entry : map.entrySet()) {
+            paramsStr.append(entry.getKey() + "=" + entry.getValue() + "&");
+        }
 
         //remove last "&"
-        if (getParams.length() > 0) getParams.setLength(getParams.length() - 1);
+        if (paramsStr.length() > 0) paramsStr.setLength(paramsStr.length() - 1);
 
-        return getParams.toString().replace(" ", "+");
+        return paramsStr.toString().replace(" ", "+");
     }
 }
