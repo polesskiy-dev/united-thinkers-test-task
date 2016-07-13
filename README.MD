@@ -24,7 +24,7 @@ where:
  
 Sale requests class hierarchy:
 
-| Sale request (abstract) |
+| Sale request (abstract) | |
 | --- | --- |
 |  SaleRequestWithAccountData | SaleRequestWithAccountNumber |
 |  SaleAVSRequestWithAccountData | SaleAVSRequestWithAccountNumber |
