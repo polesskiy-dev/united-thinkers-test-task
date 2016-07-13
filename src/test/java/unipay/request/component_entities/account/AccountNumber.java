@@ -1,6 +1,8 @@
 package unipay.request.component_entities.account;
 
-
+/**
+ * Account number
+ */
 public class AccountNumber {
     private String holderName;
     private String accountNumber;

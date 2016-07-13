@@ -1,7 +1,7 @@
 package unipay.request.component_entities.account;
 
 /**
- * Created by polesskiy on 11.07.16.
+ * Account data
  */
 public class AccountData {
     private String accountData;

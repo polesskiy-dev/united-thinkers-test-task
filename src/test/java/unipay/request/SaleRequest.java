@@ -3,8 +3,14 @@ package unipay.request;
 import unipay.request.component_entities.AuthInfo;
 import unipay.request.component_entities.TransactionInfo;
 import unipay.request.component_entities.account.AccountInfo;
+
 import java.util.Map;
 
+/**
+ * Sale request container class.
+ * <p>
+ * Represents sale request with appropriate entities.
+ */
 public abstract class SaleRequest {
     protected AuthInfo authInfo;
     protected AccountInfo accountInfo;

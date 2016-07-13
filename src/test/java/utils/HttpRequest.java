@@ -11,6 +11,13 @@ import java.net.URL;
 public class HttpRequest {
     public static final String USER_AGENT = "Mozilla/5.0";
 
+    /**
+     * Send GET request
+     *
+     * @param url - URL
+     * @return {String} response
+     * @throws Exception - if server response without HTTP code "OK" 200
+     */
     public static String sendGet(String url) throws Exception {
         URL urlObj = new URL(url);
 

@@ -9,9 +9,13 @@ import utils.ObjToMapConverter;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Sale request with account data
+ *
+ * @see SaleRequest
+ */
 public class SaleRequestWithAccountNumber extends SaleRequest {
-    private AccountNumber accountNumber;
+    protected AccountNumber accountNumber;
 
     public SaleRequestWithAccountNumber(AuthInfo authInfo, AccountInfo accountInfo, TransactionInfo transactionInfo, AccountNumber accountNumber) {
         super(authInfo, accountInfo, transactionInfo);

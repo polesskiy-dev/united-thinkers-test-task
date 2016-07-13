@@ -10,13 +10,17 @@ import utils.ObjToMapConverter;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SaleAVSRequestWithAccountData extends SaleRequest {
-    private AccountData accountData;
+/**
+ * Sale request for account verification with account data
+ *
+ * @see SaleRequest
+ * @see SaleRequestWithAccountData
+ */
+public class SaleAVSRequestWithAccountData extends SaleRequestWithAccountData {
     private BillingAddressInfo billingAddressInfo;
 
     public SaleAVSRequestWithAccountData(AuthInfo authInfo, AccountInfo accountInfo, TransactionInfo transactionInfo, AccountData accountData, BillingAddressInfo billingAddressInfo) {
-        super(authInfo, accountInfo, transactionInfo);
-        this.accountData = accountData;
+        super(authInfo, accountInfo, transactionInfo, accountData);
         this.billingAddressInfo = billingAddressInfo;
     }
 
