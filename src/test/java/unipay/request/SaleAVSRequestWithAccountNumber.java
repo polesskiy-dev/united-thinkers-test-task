@@ -1,20 +1,20 @@
 package unipay.request;
 
-import unipay.request.parts.AuthInfo;
-import unipay.request.parts.BillingAddressInfo;
-import unipay.request.parts.TransactionInfo;
-import unipay.request.parts.account.AccountInfo;
-import unipay.request.parts.account.AccountNumber;
+import unipay.request.component_entities.AuthInfo;
+import unipay.request.component_entities.BillingAddressInfo;
+import unipay.request.component_entities.TransactionInfo;
+import unipay.request.component_entities.account.AccountInfo;
+import unipay.request.component_entities.account.AccountNumber;
 import utils.ObjToMapConverter;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AVSRequestAccountNumber extends SaleRequest {
+public class SaleAVSRequestWithAccountNumber extends SaleRequest {
     private AccountNumber accountNumber;
     private BillingAddressInfo billingAddressInfo;
 
-    public AVSRequestAccountNumber(AuthInfo authInfo, AccountInfo accountInfo, TransactionInfo transactionInfo, AccountNumber accountNumber, BillingAddressInfo billingAddressInfo) {
+    public SaleAVSRequestWithAccountNumber(AuthInfo authInfo, AccountInfo accountInfo, TransactionInfo transactionInfo, AccountNumber accountNumber, BillingAddressInfo billingAddressInfo) {
         super(authInfo, accountInfo, transactionInfo);
         this.accountNumber = accountNumber;
         this.billingAddressInfo = billingAddressInfo;

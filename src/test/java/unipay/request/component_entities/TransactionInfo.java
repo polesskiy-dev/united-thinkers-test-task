@@ -1,4 +1,4 @@
-package unipay.request.parts;
+package unipay.request.component_entities;
 
 /**
  * Transaction Information

@@ -1,4 +1,4 @@
-package unipay.request.parts.account;
+package unipay.request.component_entities.account;
 
 /**
  * Created by polesskiy on 11.07.16.

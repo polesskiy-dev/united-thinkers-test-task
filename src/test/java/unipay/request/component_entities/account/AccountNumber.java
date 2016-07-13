@@ -1,4 +1,4 @@
-package unipay.request.parts.account;
+package unipay.request.component_entities.account;
 
 
 public class AccountNumber {

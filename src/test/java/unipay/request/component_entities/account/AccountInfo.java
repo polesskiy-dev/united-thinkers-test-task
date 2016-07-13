@@ -1,4 +1,4 @@
-package unipay.request.parts.account;
+package unipay.request.component_entities.account;
 
 /**
  * Account info
@@ -7,26 +7,31 @@ package unipay.request.parts.account;
  */
 public class AccountInfo {
     private String accountType;
-//    private String scs;
+    private String csc;
 
     public AccountInfo(String accountType) {
         this.accountType = accountType;
-//        this.scs = scs;
     }
+
+    public AccountInfo(String accountType, String csc) {
+        this.accountType = accountType;
+        this.csc = csc;
+    }
+
 
     public String getAccountType() {
         return accountType;
     }
 
-//    public String getScs() {
-//        return scs;
-//    }
+    public String getCsc() {
+        return this.csc;
+    }
 
     public void setAccountType(String accountType) {
         this.accountType = accountType;
     }
 
-//    public void setScs(String scs) {
-//        this.scs = scs;
-//    }
+    public void setCsc(String csc) {
+        this.csc = csc;
+    }
 }

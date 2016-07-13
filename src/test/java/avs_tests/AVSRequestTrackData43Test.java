@@ -3,13 +3,13 @@ package avs_tests;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import unipay.request.AVSRequestWithAccountDataRequest;
+import unipay.request.SaleAVSRequestWithAccountData;
 import unipay.request.SaleRequest;
-import unipay.request.parts.AuthInfo;
-import unipay.request.parts.BillingAddressInfo;
-import unipay.request.parts.TransactionInfo;
-import unipay.request.parts.account.AccountData;
-import unipay.request.parts.account.AccountInfo;
+import unipay.request.component_entities.AuthInfo;
+import unipay.request.component_entities.BillingAddressInfo;
+import unipay.request.component_entities.TransactionInfo;
+import unipay.request.component_entities.account.AccountData;
+import unipay.request.component_entities.account.AccountInfo;
 import utils.HttpRequest;
 
 import java.util.Arrays;
@@ -26,7 +26,7 @@ public class AVSRequestTrackData43Test {
 
     public AVSRequestTrackData43Test(String zipCode) {
         this.zipCode = zipCode;
-        this.saleRequest = new AVSRequestWithAccountDataRequest(
+        this.saleRequest = new SaleAVSRequestWithAccountData(
                 new AuthInfo("account-verification", "test_api_user", "C8v20gAdHjig3LMRWGhm5PK1G00v08V1", "2001"),
                 new AccountInfo("R"),
                 new TransactionInfo(5000, "RE"),

@@ -1,18 +1,19 @@
 package unipay.request;
 
-import unipay.request.parts.AuthInfo;
-import unipay.request.parts.TransactionInfo;
-import unipay.request.parts.account.AccountInfo;
-import unipay.request.parts.account.AccountNumber;
+import unipay.request.component_entities.AuthInfo;
+import unipay.request.component_entities.TransactionInfo;
+import unipay.request.component_entities.account.AccountInfo;
+import unipay.request.component_entities.account.AccountNumber;
 import utils.ObjToMapConverter;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ResponseCodeWithAccountNumberRequest extends SaleRequest {
+
+public class SaleRequestWithAccountNumber extends SaleRequest {
     private AccountNumber accountNumber;
 
-    public ResponseCodeWithAccountNumberRequest(AuthInfo authInfo, AccountInfo accountInfo, TransactionInfo transactionInfo, AccountNumber accountNumber) {
+    public SaleRequestWithAccountNumber(AuthInfo authInfo, AccountInfo accountInfo, TransactionInfo transactionInfo, AccountNumber accountNumber) {
         super(authInfo, accountInfo, transactionInfo);
         this.accountNumber = accountNumber;
     }

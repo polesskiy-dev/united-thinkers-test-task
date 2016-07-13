@@ -4,11 +4,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import unipay.request.SaleRequest;
-import unipay.request.ResponseCodeWithAccountNumberRequest;
-import unipay.request.parts.AuthInfo;
-import unipay.request.parts.TransactionInfo;
-import unipay.request.parts.account.AccountInfo;
-import unipay.request.parts.account.AccountNumber;
+import unipay.request.SaleRequestWithAccountNumber;
+import unipay.request.component_entities.AuthInfo;
+import unipay.request.component_entities.TransactionInfo;
+import unipay.request.component_entities.account.AccountInfo;
+import unipay.request.component_entities.account.AccountNumber;
 import utils.HttpRequest;
 
 import java.util.Arrays;
@@ -17,15 +17,15 @@ import java.util.Collection;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
-public class ResponseCodeSaleRequestA01Test {
-    private static final String EXPECTED_RESPONSE_CODE_STRING = "responseCode=A01";
-
+public class ResponseCodeRequestTest {
     private int amount;
+    private String expectedResponseCodeString;
     private SaleRequest saleRequest;
 
-    public ResponseCodeSaleRequestA01Test(int amount) {
+    public ResponseCodeRequestTest(int amount, String expectedResponseCode) {
         this.amount = amount;
-        this.saleRequest = new ResponseCodeWithAccountNumberRequest(
+        this.expectedResponseCodeString = "responseCode=" + expectedResponseCode;
+        this.saleRequest = new SaleRequestWithAccountNumber(
                 new AuthInfo("sale", "test_api_user", "C8v20gAdHjig3LMRWGhm5PK1G00v08V1", "2001"),
                 new AccountInfo("R"),
                 new TransactionInfo(this.amount, "RE"),
@@ -35,14 +35,13 @@ public class ResponseCodeSaleRequestA01Test {
 
 
     @Test
-    public void testCreateTestDataSuite() {
+    public void testResponseCode() {
         try {
             String REQUEST_URL = "https://sandbox-secure.unitedthinkers.com/gates/xurl?" + this.saleRequest.toGetParamsString();
             String response = HttpRequest.sendGet(REQUEST_URL);
 
-
             System.out.printf("Send sale request with accountNumber and amount %d to URL:\r\n%s\r\nResponse: %s\r\n", this.amount, REQUEST_URL, response);
-            assertTrue("Expect " + EXPECTED_RESPONSE_CODE_STRING, response.contains(EXPECTED_RESPONSE_CODE_STRING));
+            assertTrue("Expect " + expectedResponseCodeString, response.contains(expectedResponseCodeString));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,7 +50,8 @@ public class ResponseCodeSaleRequestA01Test {
     @Parameterized.Parameters
     public static Collection<Object[]> getTestData() {
         return Arrays.asList(new Object[][]{
-                {500}, {4000}, {6999},
+                {500, "A01"}, {4000, "A01"}, {6999, "A01"},
+                {12000, "D03"}, {12500, "D03"}, {12999, "D03"},
         });
     }
 }
